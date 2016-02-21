@@ -1,13 +1,20 @@
 import React from 'react'
 
-const CardCheckItem = ({card}) =>
-  <label>
-    <input type="checkbox" />
+const makeClickHandler = (card, toggleCard) =>
+  (event) => {
+    event.preventDefault()
+    toggleCard(card)
+  }
+
+const CardCheckItem = ({ card, toggleCard }) =>
+  <div onClick={makeClickHandler(card, toggleCard)}>
+    <i className={card.selected ? 'icon-checkmark' : 'icon-checkmark2'} />
     {card.name}
-  </label>
+  </div>
 
 CardCheckItem.propTypes = {
   card: React.PropTypes.object.isRequired,
+  toggleCard: React.PropTypes.func.isRequired,
 }
 
 export default CardCheckItem

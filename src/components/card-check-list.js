@@ -1,16 +1,18 @@
 import React from 'react'
 import CardCheckItem from './card-check-item'
 
-const renderItem = (card) =>
-  <CardCheckItem card={card} key={card.name} />
+const renderItem = (toggleCard) =>
+  (card) =>
+    <CardCheckItem card={card} toggleCard={toggleCard} key={card.name} />
 
-const CardCheckList = (props) =>
+const CardCheckList = ({ cards, toggleCard }) =>
   <div>
-    {props.cards.map(renderItem)}
+    {cards.map(renderItem(toggleCard))}
   </div>
 
 CardCheckList.propTypes = {
-  cards: React.PropTypes.array
+  cards: React.PropTypes.array.isRequired,
+  toggleCard: React.PropTypes.func.isRequired,
 }
 
 export default CardCheckList

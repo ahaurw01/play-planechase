@@ -2,7 +2,7 @@ import React from 'react';
 
 const App = ({children}) =>
   <div>
-    <header>Play Planechase</header>
+    <h1>Play Planechase</h1>
     {children}
   </div>
 

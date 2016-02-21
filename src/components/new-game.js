@@ -1,8 +1,11 @@
 import React from 'react'
+import cards from '../data/cards'
+import CardCheckList from './card-check-list'
 
 const NewGame = () =>
   <div>
-    <p>New Game</p>
+    <h2>New Game</h2>
+    <CardCheckList cards={cards} />
   </div>
 
 export default NewGame

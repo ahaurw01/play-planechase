@@ -1,7 +1,3 @@
-import React from 'react'
-import {render} from 'react-dom'
+import { setup } from './routes'
 
-render(
-  <h1>It works! OMG</h1>,
-  document.getElementById('app')
-)
+setup();

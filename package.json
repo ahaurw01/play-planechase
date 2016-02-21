@@ -1,0 +1,24 @@
+{
+  "name": "play-planechase",
+  "version": "1.0.0",
+  "description": "Play some planar magic!",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ahaurw01/play-planechase.git"
+  },
+  "keywords": [
+    "mtg"
+  ],
+  "author": "Aaron Haurwitz <aaron.haurwitz@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ahaurw01/play-planechase/issues"
+  },
+  "homepage": "https://github.com/ahaurw01/play-planechase#readme"
+}

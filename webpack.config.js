@@ -3,7 +3,7 @@ module.exports = {
 
   entry: './src/index.js',
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx', '.styl']
   },
   output: {
     path: __dirname + '/public',
@@ -18,8 +18,17 @@ module.exports = {
         query: {
           presets: ['es2015', 'react']
         }
+      },
+      {
+        test: /\.styl$/,
+        loader: 'style-loader!css-loader!stylus-loader'
       }
     ]
+  },
+
+  stylus: {
+    use: [require('nib')],
+    import: ['~nib/lib/nib/index.styl']
   },
 
   devServer: {

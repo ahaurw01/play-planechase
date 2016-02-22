@@ -1,6 +1,7 @@
 import React from 'react'
-import extend from 'lodash/extend'
-import filter from 'lodash/filter'
+import Firebase from 'firebase'
+import _ from 'lodash'
+import { browserHistory } from 'react-router'
 import cards from '../data/cards'
 import CardCheckList from './card-check-list'
 import CardSpoiler from './card-spoiler'
@@ -9,7 +10,7 @@ const NewGame = React.createClass({
   getInitialState() {
     return {
       cards: cards.map((card) => {
-        return extend(card, { selected: true })
+        return _.extend(card, { selected: true })
       }),
       spoiledCard: {
         imageUrl: 'images/planechase-back.jpg'
@@ -18,10 +19,14 @@ const NewGame = React.createClass({
     }
   },
 
+  componentDidMount() {
+    this.gamesRef = new Firebase('https://play-planechase.firebaseio.com/games')
+  },
+
   toggleCard(clickedCard) {
     const cards = this.state.cards.map((card) => {
       if (card.name === clickedCard.name) {
-        return extend(card, { selected: !card.selected })
+        return _.extend(card, { selected: !card.selected })
       }
       return card
     })
@@ -42,13 +47,33 @@ const NewGame = React.createClass({
   },
 
   getCardsOfType(type) {
-    return filter(this.state.cards, ['type', type])
+    return _.filter(this.state.cards, ['type', type])
+  },
+
+  startGame() {
+    const selectedCards = _(this.state.cards)
+      .filter(['selected', true])
+      .map((card) => _.omit(card, ['selected']))
+      .shuffle()
+      .value()
+
+    const newGameRef = this.gamesRef.push({
+      cards: selectedCards,
+      currentIndex: 0
+    });
+    const newGameId = newGameRef.key()
+
+    browserHistory.push(`/game/${newGameId}`)
   },
 
   render() {
     return (
       <div>
         <h2>New Game</h2>
+        <button
+          onClick={this.startGame}>
+          Start Game
+        </button>
         <CardCheckList
           title="Planes"
           cards={this.getCardsOfType('Plane')}
@@ -63,6 +88,10 @@ const NewGame = React.createClass({
           card={this.state.spoiledCard}
           isShowing={this.state.showSpoiler}
           hideSpoiler={this.hideSpoiler} />
+        <button
+          onClick={this.startGame}>
+          Start Game
+        </button>
       </div>
     )
   }

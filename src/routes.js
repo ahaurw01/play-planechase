@@ -12,8 +12,8 @@ export const setup = () => {
       <Route path="/" component={App}>
         <IndexRoute component={Landing} />
         <Route path="new-game" component={NewGame} />
-        <Route path="/game/:gameId" component={Game} />
       </Route>
+      <Route path="/game/:gameId" component={Game} />
     </Router>
   ), document.getElementById('app'))
 }

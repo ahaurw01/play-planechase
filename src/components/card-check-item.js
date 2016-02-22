@@ -15,7 +15,7 @@ const CardCheckItem = ({ card, toggleCard }) =>
     <i
       className={makeIconClassName(card.selected)}
       onClick={makeClickHandler(card, toggleCard)} />
-    {card.name}
+    <span className="card-link">{card.name}</span>
   </div>
 
 CardCheckItem.propTypes = {

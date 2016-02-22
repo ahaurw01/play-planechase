@@ -11,8 +11,10 @@ const makeIconClassName = (selected) => {
 }
 
 const CardCheckItem = ({ card, toggleCard }) =>
-  <div onClick={makeClickHandler(card, toggleCard)}>
-    <i className={makeIconClassName(card.selected)} />
+  <div>
+    <i
+      className={makeIconClassName(card.selected)}
+      onClick={makeClickHandler(card, toggleCard)} />
     {card.name}
   </div>
 

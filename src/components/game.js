@@ -19,10 +19,19 @@ const Game = React.createClass({
     this.gameRef.off();
   },
 
+  getCurrentCardStyle() {
+    const currentIndex = _.get(this.state.game, 'currentIndex')
+    const cards = _.get(this.state.game, 'cards')
+    const currentCard = _.get(cards, `[${currentIndex}]`)
+    return { backgroundImage: `url(${_.get(currentCard, 'imageUrl')})` }
+  },
+
   render() {
     return (
       <div className="game">
-        {this.state.game.currentIndex}
+        <div
+          className="game-card-image"
+          style={this.getCurrentCardStyle()} />
       </div>
     )
   }

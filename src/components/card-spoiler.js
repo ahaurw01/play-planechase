@@ -4,7 +4,7 @@ const makeClassName = (isShowing) =>
   'card-spoiler ' + (isShowing ? '' : 'hidden')
 
 const makeStyle = (imageUrl) =>
-  ({ 'background-image': `url(${imageUrl})` })
+  ({ 'backgroundImage': `url(${imageUrl})` })
 
 const CardSpoiler = ({ card, isShowing, hideSpoiler }) =>
   <div className={makeClassName(isShowing)} onClick={hideSpoiler}>

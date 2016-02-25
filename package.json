@@ -29,7 +29,8 @@
     "index-prod": "jade -P -O '{\"bundleSrc\":\"/bundle.min.js\"}' -o public src/templates/index.jade",
     "bundle-prod": "env NODE_ENV=production webpack && npm run minify",
     "minify": "uglifyjs -c -m --screw-ie8 -o public/bundle.min.js -- public/bundle.js",
-    "build-prod": "npm run index-prod && npm run bundle-prod && npm run minify && rm public/bundle.js",
+    "build-prod": "npm run index-prod && npm run bundle-prod && rm public/bundle.js",
+    "deploy-prod": "npm run build-prod && aws s3 sync public s3://playplanechase-prod",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

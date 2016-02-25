@@ -11,6 +11,7 @@
     "babel-preset-react": "^6.5.0",
     "css-loader": "^0.23.1",
     "firebase": "^2.4.1",
+    "jade": "^1.11.0",
     "lodash": "^4.5.0",
     "nib": "^1.1.0",
     "react": "^0.14.7",
@@ -18,11 +19,17 @@
     "react-router": "^2.0.0",
     "style-loader": "^0.13.0",
     "stylus-loader": "^1.5.1",
+    "uglify-js": "^2.6.2",
     "webpack": "^1.12.13",
     "webpack-dev-server": "^1.14.1"
   },
   "scripts": {
-    "start": "webpack-dev-server --progress",
+    "start": "npm run index-dev && webpack-dev-server --progress",
+    "index-dev": "jade -P -O '{\"bundleSrc\":\"/bundle.js\"}' -o public src/templates/index.jade",
+    "index-prod": "jade -P -O '{\"bundleSrc\":\"/bundle.min.js\"}' -o public src/templates/index.jade",
+    "bundle-prod": "env NODE_ENV=production webpack && npm run minify",
+    "minify": "uglifyjs -c -m --screw-ie8 -o public/bundle.min.js -- public/bundle.js",
+    "build-prod": "npm run index-prod && npm run bundle-prod && npm run minify && rm public/bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

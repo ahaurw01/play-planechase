@@ -1,4 +1,5 @@
 import React from 'react'
+import GameButton from './game-button'
 
 const Game = React.createClass({
   getInitialState() {
@@ -26,12 +27,22 @@ const Game = React.createClass({
     return { backgroundImage: `url(${_.get(currentCard, 'imageUrl')})` }
   },
 
+  goBack() {
+    console.log('back!')
+  },
+
+  goForward() {
+    console.log('forward!')
+  },
+
   render() {
     return (
       <div className="game">
         <div
           className="game-card-image"
           style={this.getCurrentCardStyle()} />
+        <GameButton direction="back" go={this.goBack} />
+        <GameButton direction="forward" go={this.goForward} />
       </div>
     )
   }

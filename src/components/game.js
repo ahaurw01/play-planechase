@@ -28,11 +28,41 @@ const Game = React.createClass({
   },
 
   goBack() {
-    console.log('back!')
+    const cards = _.get(this.state, 'game.cards')
+    let currentIndex = _.get(this.state, 'game.currentIndex')
+
+    if (!cards) {
+      return
+    }
+
+    currentIndex--
+    if (currentIndex < 0) {
+      currentIndex = cards.length - 1
+    }
+
+    this.setNewIndex(currentIndex)
   },
 
   goForward() {
-    console.log('forward!')
+    const cards = _.get(this.state, 'game.cards')
+    let currentIndex = _.get(this.state, 'game.currentIndex')
+
+    if (!cards) {
+      return
+    }
+
+    currentIndex++
+    if (currentIndex >= cards.length) {
+      currentIndex = 0
+    }
+
+    this.setNewIndex(currentIndex)
+  },
+
+  setNewIndex(index) {
+    this.gameRef.update({
+      currentIndex: index
+    })
   },
 
   render() {

@@ -2,6 +2,7 @@ import React from 'react'
 import Firebase from 'firebase'
 import _ from 'lodash'
 import { browserHistory } from 'react-router'
+import Toggle from 'react-toggle'
 import cards from '../data/cards'
 import CardCheckList from './card-check-list'
 import CardSpoiler from './card-spoiler'
@@ -15,7 +16,8 @@ const NewGame = React.createClass({
       spoiledCard: {
         imageUrl: 'images/planechase-back.jpg'
       },
-      showSpoiler: false
+      showSpoiler: false,
+      isPublic: true,
     }
   },
 
@@ -46,6 +48,12 @@ const NewGame = React.createClass({
     })
   },
 
+  changePublic() {
+    this.setState({
+      isPublic: !this.state.isPublic
+    })
+  },
+
   getCardsOfType(type) {
     return _.filter(this.state.cards, ['type', type])
   },
@@ -70,6 +78,12 @@ const NewGame = React.createClass({
     return (
       <div>
         <h2>New Game</h2>
+        <label className="toggle">
+          <Toggle
+            defaultChecked={this.state.isPublic}
+            onChange={this.changePublic} />
+            <span className="toggle-text">Make public</span>
+        </label>
         <button
           onClick={this.startGame}>
           Start Game

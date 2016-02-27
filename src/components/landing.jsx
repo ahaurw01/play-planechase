@@ -41,6 +41,7 @@ const Landing = React.createClass({
     return (
       <div>
         <Link to="/new-game">New Game</Link>
+        <h2>Join a public game</h2>
         <PublicGameList publicGames={this.state.publicGames} />
       </div>
     )

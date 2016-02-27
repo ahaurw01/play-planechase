@@ -12,15 +12,25 @@ const Landing = React.createClass({
 
   componentDidMount() {
     this.gamesRef = new Firebase('https://play-planechase.firebaseio.com/games')
-    this.gamesRef
+    const filter = this.gamesRef
       .orderByChild('isPublic')
       .equalTo(true)
-      .on('child_added', (snapshot) => {
-        const publicGames = this.state.publicGames.slice()
-        const game = _.extend({}, snapshot.val(), { id: snapshot.key() })
+
+    filter.on('child_added', this.makePublicGameHandler('added'))
+    filter.on('child_removed', this.makePublicGameHandler('removed'))
+  },
+
+  makePublicGameHandler(event) {
+    return (snapshot) => {
+      const publicGames = this.state.publicGames.slice()
+      const game = _.extend({}, snapshot.val(), { id: snapshot.key() })
+      if (event === 'added') {
         publicGames.unshift(game)
-        this.setState({ publicGames })
-      })
+      } else {
+        _.remove(publicGames, ['id', snapshot.key()])
+      }
+      this.setState({ publicGames })
+    }
   },
 
   componentWillUnmount() {

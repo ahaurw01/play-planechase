@@ -67,7 +67,8 @@ const NewGame = React.createClass({
 
     const newGameRef = this.gamesRef.push({
       cards: selectedCards,
-      currentIndex: 0
+      currentIndex: 0,
+      isPublic: this.state.isPublic,
     });
     const newGameId = newGameRef.key()
 

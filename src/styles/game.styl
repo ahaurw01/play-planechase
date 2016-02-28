@@ -5,18 +5,23 @@
   background-position center
   background-repeat no-repeat
 
-.game-button
+game-action-base()
   position fixed
   width 10%
-  height 100px
-  top 50%
-  transform translateY(-50%)
   color black
-  font-size 30px
   border none
   outline none
   cursor pointer
   background-color play-overlay-light-grey
+  &:active
+    background-color play-overlay-grey
+
+.game-button
+  game-action-base()
+  height 100px
+  top 50%
+  transform translateY(-50%)
+  font-size 30px
 
   &.game-button-forward
     right 0
@@ -25,3 +30,8 @@
   &.game-button-back
     left 0
     border-radius 0 10px 10px 0
+
+.game-die
+  game-action-base()
+  top 0
+  left 0

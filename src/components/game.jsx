@@ -2,6 +2,7 @@ import _ from 'lodash'
 import React from 'react'
 import Firebase from 'firebase'
 import GameButton from './game-button'
+import Die from './die'
 
 const Game = React.createClass({
   propTypes: {
@@ -71,6 +72,26 @@ const Game = React.createClass({
     })
   },
 
+  roll() {
+    this.gameRef.update({ face: 'rolling' })
+
+    const random = Math.floor(Math.random() * 6) + 1
+    let face = 'blank'
+    if (random === 1) {
+      face = 'walk'
+    } else if (random === 6) {
+      face = 'chaos'
+    }
+
+    setTimeout(() => {
+      this.gameRef.update({ face })
+    }, 1000)
+  },
+
+  getDieFace() {
+    return _.get(this.state, 'game.face') || 'blank'
+  },
+
   render() {
     return (
       <div className="game">
@@ -79,6 +100,7 @@ const Game = React.createClass({
           style={this.getCurrentCardStyle()} />
         <GameButton direction="back" go={this.goBack} />
         <GameButton direction="forward" go={this.goForward} />
+        <Die roll={this.roll} face={this.getDieFace()} />
       </div>
     )
   }

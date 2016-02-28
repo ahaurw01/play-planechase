@@ -7,7 +7,7 @@ const renderGame = (game) =>
     key={game.id}>
     <Link
       to={`/game/${game.id}`}>
-      {game.id}
+      {game.name || '(no name)'}
     </Link>
   </li>
 

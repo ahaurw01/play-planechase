@@ -44,7 +44,7 @@ const Landing = React.createClass({
         <div className="row text-center">
           <Link
             to="/new-game"
-            className="btn btn-primary btn-lg"
+            className="btn btn-primary btn-lg landing-start-new-game"
             role="button">
               <span>Start a new game</span>
           </Link>

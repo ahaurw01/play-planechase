@@ -123,16 +123,22 @@ const NewGame = React.createClass({
           onClick={this.startGame}>
           Start Game
         </button>
-        <CardCheckList
-          title="Planes"
-          cards={this.getCardsOfType('Plane')}
-          toggleCard={this.toggleCard}
-          showSpoiler={this.showSpoiler} />
-        <CardCheckList
-          title="Phenomena"
-          cards={this.getCardsOfType('Phenomenon')}
-          toggleCard={this.toggleCard}
-          showSpoiler={this.showSpoiler} />
+        <div className="row">
+          <div className="col-sm-6">
+            <CardCheckList
+              title="Planes"
+              cards={this.getCardsOfType('Plane')}
+              toggleCard={this.toggleCard}
+              showSpoiler={this.showSpoiler} />
+          </div>
+          <div className="col-sm-6">
+            <CardCheckList
+              title="Phenomena"
+              cards={this.getCardsOfType('Phenomenon')}
+              toggleCard={this.toggleCard}
+              showSpoiler={this.showSpoiler} />
+          </div>
+        </div>
         <CardSpoiler
           card={this.state.spoiledCard}
           isShowing={this.state.showSpoiler}

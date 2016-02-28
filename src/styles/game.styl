@@ -1,0 +1,27 @@
+.game-card-image
+  width 100vw
+  height 100vh
+  background-size contain
+  background-position center
+  background-repeat no-repeat
+
+.game-button
+  position fixed
+  width 10%
+  height 100px
+  top 50%
+  transform translateY(-50%)
+  color black
+  font-size 30px
+  border none
+  outline none
+  cursor pointer
+  background-color play-overlay-light-grey
+
+  &.game-button-forward
+    right 0
+    border-radius 10px 0 0 10px
+
+  &.game-button-back
+    left 0
+    border-radius 0 10px 10px 0

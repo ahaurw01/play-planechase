@@ -41,8 +41,15 @@ const Landing = React.createClass({
   render() {
     return (
       <div>
-        <Link to="/new-game">New Game</Link>
-        <h2>Join a public game</h2>
+        <div className="row text-center">
+          <Link to="/new-game">
+            <button className="btn btn-primary">
+              Start a new game
+            </button>
+          </Link>
+        </div>
+
+        <h3>Join a public game</h3>
         <PublicGameList publicGames={this.state.publicGames} />
       </div>
     )

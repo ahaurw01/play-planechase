@@ -5,12 +5,12 @@ import PlanechaseIcon from './planechase-icon'
 const App = ({children}) =>
   <div className="container">
     <Link to="/" className="header-link">
-      <h1>
+      <h2>
         <div className="header-image">
           <PlanechaseIcon />
         </div>
         <span className="header-text">Play Planechase</span>
-      </h1>
+      </h2>
     </Link>
     <div>
       {children}

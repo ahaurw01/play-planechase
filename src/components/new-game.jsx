@@ -7,6 +7,9 @@ import cards from '../data/cards'
 import CardCheckList from './card-check-list'
 import CardSpoiler from './card-spoiler'
 
+const randomCardUri =
+  'https://kczadcwkwd.execute-api.us-east-1.amazonaws.com/prod/random-mtg-card'
+
 const NewGame = React.createClass({
   getInitialState() {
     return {
@@ -18,11 +21,27 @@ const NewGame = React.createClass({
       },
       showSpoiler: false,
       isPublic: true,
+      name: ''
     }
   },
 
   componentDidMount() {
     this.gamesRef = new Firebase('https://play-planechase.firebaseio.com/games')
+    this.initializePublicName()
+  },
+
+  initializePublicName() {
+    const req = new XMLHttpRequest()
+    req.addEventListener('load', () => {
+      try {
+        const card = JSON.parse(req.response)
+        this.setState({
+          name: card.name
+        })
+      } catch (err) { /* No matter. */ }
+    });
+    req.open('GET', randomCardUri)
+    req.send()
   },
 
   toggleCard(clickedCard) {
@@ -54,6 +73,12 @@ const NewGame = React.createClass({
     })
   },
 
+  changeName(event) {
+    this.setState({
+      name: event.target.value
+    })
+  },
+
   getCardsOfType(type) {
     return _.filter(this.state.cards, ['type', type])
   },
@@ -69,6 +94,7 @@ const NewGame = React.createClass({
       cards: selectedCards,
       currentIndex: 0,
       isPublic: this.state.isPublic,
+      name: this.state.name,
     });
     const newGameId = newGameRef.key()
 
@@ -84,6 +110,14 @@ const NewGame = React.createClass({
             defaultChecked={this.state.isPublic}
             onChange={this.changePublic} />
             <span className="toggle-text">Make public</span>
+        </label>
+        <label>
+          <span>Name</span>
+          <input
+            type="text"
+            placeholder="Public game name"
+            value={this.state.name}
+            onChange={this.changeName} />
         </label>
         <button
           onClick={this.startGame}>
@@ -111,6 +145,5 @@ const NewGame = React.createClass({
     )
   }
 })
-
 
 export default NewGame

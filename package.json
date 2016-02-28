@@ -36,7 +36,7 @@
     "minify": "uglifyjs -c -m --screw-ie8 -o public/bundle.min.js -- public/bundle.js",
     "build-prod": "npm run index-prod && npm run bundle-prod && rm public/bundle.js",
     "deploy-prod": "npm run build-prod && aws s3 sync public s3://playplanechase.com",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "env NODE_ENV=test webpack"
   },
   "repository": {
     "type": "git",

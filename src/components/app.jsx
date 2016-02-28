@@ -7,6 +7,6 @@ const App = ({children}) =>
   </div>
 
 App.propTypes = {
-  children: React.PropTypes.isRequired
+  children: React.PropTypes.object.isRequired
 }
 export default App;

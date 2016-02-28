@@ -105,21 +105,21 @@ const NewGame = React.createClass({
     return (
       <div className="new-game">
         <h3>New Game</h3>
-        <label className="toggle">
-          <span className="label-text">Make public</span>
+        <label className="new-game-label">
+          <span className="new-game-label-text">Make public</span>
           <Toggle
             defaultChecked={this.state.isPublic}
             onChange={this.changePublic} />
         </label>
-        <label>
-          <span className="label-text">Name</span>
+        <label className="new-game-label">
+          <span className="new-game-label-text">Name</span>
           <input
             type="text"
             placeholder="Public game name"
             value={this.state.name}
             onChange={this.changeName} />
         </label>
-        <button
+        <button className="btn btn-default new-game-start"
           onClick={this.startGame}>
           Start Game
         </button>
@@ -137,7 +137,7 @@ const NewGame = React.createClass({
           card={this.state.spoiledCard}
           isShowing={this.state.showSpoiler}
           hideSpoiler={this.hideSpoiler} />
-        <button
+        <button className="btn btn-default new-game-start"
           onClick={this.startGame}>
           Start Game
         </button>

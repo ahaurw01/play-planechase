@@ -103,16 +103,16 @@ const NewGame = React.createClass({
 
   render() {
     return (
-      <div>
-        <h2>New Game</h2>
+      <div className="new-game">
+        <h3>New Game</h3>
         <label className="toggle">
+          <span className="label-text">Make public</span>
           <Toggle
             defaultChecked={this.state.isPublic}
             onChange={this.changePublic} />
-            <span className="toggle-text">Make public</span>
         </label>
         <label>
-          <span>Name</span>
+          <span className="label-text">Name</span>
           <input
             type="text"
             placeholder="Public game name"

@@ -23,6 +23,13 @@ module.exports = {
         test: /\.styl$/,
         loader: 'style-loader!css-loader!stylus-loader'
       }
+    ],
+    preLoaders: [
+      {
+        test: /\.jsx?$/,
+        loaders: ['eslint'],
+        exclude: /node_modules/
+      }
     ]
   },
 

@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 
 const renderGame = (game) =>
   <li
-    className="public-game-list-item"
+    className="list-group-item"
     key={game.id}>
     <Link
       to={`/game/${game.id}`}>
@@ -11,10 +11,20 @@ const renderGame = (game) =>
     </Link>
   </li>
 
+const renderEmpty = () =>
+  <p>
+    No games yet...
+  </p>
+
 const PublicGameList = ({ publicGames }) =>
-  <ul className="public-game-list">
-    {publicGames.map(renderGame)}
-  </ul>
+  <div className="row">
+    <div className="col-lg-4 col-sm-6 col-xs-12">
+      <ul className="list-group">
+        {publicGames ? publicGames.map(renderGame) : renderEmpty()}
+      </ul>
+    </div>
+  </div>
+
 
 PublicGameList.propTypes = {
   publicGames: React.PropTypes.array.isRequired,

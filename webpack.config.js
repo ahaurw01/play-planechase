@@ -43,5 +43,9 @@ module.exports = {
     colors: 'true',
     historyApiFallback: true,
     inline: true
-  }
+  },
+
+  plugins: [
+    require('webpack-fail-plugin')
+  ]
 };

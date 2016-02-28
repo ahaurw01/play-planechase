@@ -12,9 +12,13 @@ const renderItem = (toggleCard, showSpoiler) => {
 }
 
 const CardCheckList = ({ title, cards, toggleCard, showSpoiler }) =>
-  <div>
-    <h3>{title}</h3>
-    {cards.map(renderItem(toggleCard, showSpoiler))}
+  <div className="card-check-list panel panel-default">
+    <div className="panel-heading">
+      <h4 className="panel-title">{title}</h4>
+    </div>
+    <ul className="list-group">
+      {cards.map(renderItem(toggleCard, showSpoiler))}
+    </ul>
   </div>
 
 CardCheckList.propTypes = {

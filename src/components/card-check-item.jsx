@@ -13,11 +13,12 @@ const makeSpoilerHandler = (card, showSpoiler) =>
   }
 
 const makeIconClassName = (selected) => {
-  return 'card-check-icon ' + (selected ? 'icon-checkmark' : 'icon-checkmark2')
+  return 'card-check-icon glyphicon ' +
+    (selected ? 'glyphicon-check' : 'glyphicon-unchecked')
 }
 
 const CardCheckItem = ({ card, toggleCard, showSpoiler }) =>
-  <div>
+  <li className="list-group-item">
     <i
       className={makeIconClassName(card.selected)}
       onClick={makeToggleHandler(card, toggleCard)} />
@@ -26,7 +27,7 @@ const CardCheckItem = ({ card, toggleCard, showSpoiler }) =>
       onClick={makeSpoilerHandler(card, showSpoiler)}>
       {card.name}
     </span>
-  </div>
+  </li>
 
 CardCheckItem.propTypes = {
   card: React.PropTypes.object.isRequired,

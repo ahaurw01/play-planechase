@@ -105,24 +105,37 @@ const NewGame = React.createClass({
     return (
       <div className="new-game">
         <h3>New Game</h3>
-        <label className="new-game-label">
-          <span className="new-game-label-text">Make public</span>
-          <Toggle
-            defaultChecked={this.state.isPublic}
-            onChange={this.changePublic} />
-        </label>
-        <label className="new-game-label">
-          <span className="new-game-label-text">Name</span>
-          <input
-            type="text"
-            placeholder="Public game name"
-            value={this.state.name}
-            onChange={this.changeName} />
-        </label>
-        <button className="btn btn-default new-game-start"
-          onClick={this.startGame}>
-          Start Game
-        </button>
+        <div className="row">
+          <div className="col-xs-12">
+            <label className="new-game-label">
+              <span className="new-game-label-text">Make public</span>
+              <Toggle
+                defaultChecked={this.state.isPublic}
+                onChange={this.changePublic} />
+            </label>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-xs-12">
+            <label className="new-game-label">
+              <span className="new-game-label-text">Name</span>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Public game name"
+                value={this.state.name}
+                onChange={this.changeName} />
+            </label>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-xs-12">
+            <button className="btn btn-default new-game-start"
+              onClick={this.startGame}>
+              Start Game
+            </button>
+          </div>
+        </div>
         <div className="row">
           <div className="col-sm-6">
             <CardCheckList
@@ -143,10 +156,14 @@ const NewGame = React.createClass({
           card={this.state.spoiledCard}
           isShowing={this.state.showSpoiler}
           hideSpoiler={this.hideSpoiler} />
-        <button className="btn btn-default new-game-start"
-          onClick={this.startGame}>
-          Start Game
-        </button>
+        <div className="row">
+          <div className="col-xs-12">
+            <button className="btn btn-default new-game-start"
+              onClick={this.startGame}>
+              Start Game
+            </button>
+          </div>
+        </div>
       </div>
     )
   }

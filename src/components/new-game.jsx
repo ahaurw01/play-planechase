@@ -137,14 +137,14 @@ const NewGame = React.createClass({
           </div>
         </div>
         <div className="row">
-          <div className="col-sm-6">
+          <div className="col-mobile-landscape-6 col-sm-6">
             <CardCheckList
               title="Planes"
               cards={this.getCardsOfType('Plane')}
               toggleCard={this.toggleCard}
               showSpoiler={this.showSpoiler} />
           </div>
-          <div className="col-sm-6">
+          <div className="col-mobile-landscape-6 col-sm-6">
             <CardCheckList
               title="Phenomena"
               cards={this.getCardsOfType('Phenomenon')}

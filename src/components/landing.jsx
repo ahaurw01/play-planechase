@@ -1,5 +1,6 @@
 import _ from 'lodash'
 import React from 'react'
+import Firebase from 'firebase'
 import { Link } from 'react-router'
 import PublicGameList from './public-game-list'
 

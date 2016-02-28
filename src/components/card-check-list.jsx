@@ -1,13 +1,15 @@
 import React from 'react'
 import CardCheckItem from './card-check-item'
 
-const renderItem = (toggleCard, showSpoiler) =>
-  (card) =>
+const renderItem = (toggleCard, showSpoiler) => {
+  const renderCardCheckItem = (card) =>
     <CardCheckItem
       card={card}
       toggleCard={toggleCard}
       showSpoiler={showSpoiler}
       key={card.name} />
+  return renderCardCheckItem
+}
 
 const CardCheckList = ({ title, cards, toggleCard, showSpoiler }) =>
   <div>

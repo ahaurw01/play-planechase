@@ -1,7 +1,13 @@
+import _ from 'lodash'
 import React from 'react'
+import Firebase from 'firebase'
 import GameButton from './game-button'
 
 const Game = React.createClass({
+  propTypes: {
+    params: React.PropTypes.object.isRequired,
+  },
+
   getInitialState() {
     return { game: {} }
   },
@@ -77,6 +83,5 @@ const Game = React.createClass({
     )
   }
 })
-
 
 export default Game

@@ -42,10 +42,11 @@ const Landing = React.createClass({
     return (
       <div>
         <div className="row text-center">
-          <Link to="/new-game">
-            <button className="btn btn-primary">
-              Start a new game
-            </button>
+          <Link
+            to="/new-game"
+            className="btn btn-primary btn-lg"
+            role="button">
+              <span>Start a new game</span>
           </Link>
         </div>
 

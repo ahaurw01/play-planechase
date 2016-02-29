@@ -1,3 +1,21 @@
+.game-die
+  game-action-base()
+  width 60px
+  height 60px
+  top 0
+  left 0
+  border-bottom-right-radius 10px
+  overflow hidden
+
+  .game-die-face
+    width 50px
+    height 50px
+    background-color black
+    margin auto
+    border-radius 5px
+    border 1px solid play-med-grey
+    box-shadow inset 0 0 9px play-med-grey
+
 @keyframes spin {
   0% { transform: rotate3d(1,1,1,0deg) rotateY(0deg) }
   50% { transform: rotate3d(1,1,1,360deg) rotateY(360deg) }
@@ -13,10 +31,11 @@ cube-size = 50px
   .cube
     position relative
     width cube-size
+    height cube-size
     margin 0 auto
     transform-origin (cube-size / 2) (cube-size / 2)
     transform-style preserve-3d
-    animation spin 2s infinite linear
+    animation spin 1.5s infinite linear
 
     & > div
       position absolute
@@ -64,4 +83,3 @@ cube-size = 50px
 
     .cube-front
       transform translateZ((cube-size / 2))
-

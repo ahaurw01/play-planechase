@@ -3,22 +3,19 @@ import SpinningDie from './spinning-die'
 
 const Die = ({ roll, face }) => {
   let innards
-  if (true) { //(face === 'rolling') {
+  if (face === 'rolling') {
     innards = (<SpinningDie />)
   } else {
     innards = (
-      <button className="" onClick={roll}>
-        {face}
-      </button>
+      <div className="game-die-face" />
     )
   }
   return (
-    <div className="game-die">
+    <button className="game-die" onClick={roll}>
       {innards}
-    </div>
+    </button>
   )
 }
-
 
 Die.propTypes = {
   roll: React.PropTypes.func.isRequired,

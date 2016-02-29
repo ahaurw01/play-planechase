@@ -4,24 +4,26 @@
   100% { transform: rotateX(-360deg) rotateY(720deg) }
 }
 
+cube-size = 50px
+
 .game-die-spinning
   perspective none
   perspective-origin 0 0
 
   .cube
     position relative
-    width 200px
+    width cube-size
     margin 0 auto
-    transform-origin 100px 100px
+    transform-origin (cube-size / 2) (cube-size / 2)
     transform-style preserve-3d
     animation spin 2s infinite linear
 
     & > div
       position absolute
-      width 200px
-      height 200px
+      width cube-size
+      height cube-size
       border 2px play-med-grey
-      box-shadow inset 0 0 40px play-med-grey
+      box-shadow inset 0 0 (cube-size / 5) play-med-grey
       background-color black
 
     .cube-symbol
@@ -42,24 +44,24 @@
       background-image url("/images/planechase-symbol-walk.jpg")
 
     .cube-back
-      transform translateZ(-100px) rotateY(180deg)
+      transform translateZ(-(cube-size / 2)) rotateY(180deg)
 
     .cube-right
-      transform rotateY(-270deg) translateX(100px)
+      transform rotateY(-270deg) translateX((cube-size / 2))
       transform-origin top right
 
     .cube-left
-      transform rotateY(270deg) translateX(-100px)
+      transform rotateY(270deg) translateX(-(cube-size / 2))
       transform-origin center left
 
     .cube-top
-      transform rotateX(-90deg) translateY(-100px)
+      transform rotateX(-90deg) translateY(-(cube-size / 2))
       transform-origin top center
 
     .cube-bottom
-      transform rotateX(90deg) translateY(100px)
+      transform rotateX(90deg) translateY((cube-size / 2))
       transform-origin bottom center
 
     .cube-front
-      transform translateZ(100px)
+      transform translateZ((cube-size / 2))
 
